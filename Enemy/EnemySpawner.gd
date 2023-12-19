@@ -4,7 +4,7 @@ extends Node2D
 var world
 
 @export
-var spawn_radius: float = 50
+var spawn_radius: float = 500
 
 @export
 var bat_scene: PackedScene
