@@ -15,7 +15,7 @@ func spawn():
 	var spawn_position = Vector2(spawn_radius * cos(random_angle), spawn_radius * sin(random_angle))
 	bat.position = spawn_position + global_position
 	bat.target = get_parent()
-	world.add_child(bat)
+	get_parent().get_parent().add_child(bat)
 
 
 func _on_cooldown_timeout():

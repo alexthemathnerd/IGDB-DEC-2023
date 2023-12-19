@@ -7,6 +7,6 @@ func _physics_process(delta):
 	if target != null:
 		velocity = (target.position - position).normalized() * 100
 		move_and_slide()
-
-func _on_life_span_timeout():
+		
+func take_damage():
 	queue_free()
