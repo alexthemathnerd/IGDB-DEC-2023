@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://b2tdk0f1ampod"]
+[gd_scene load_steps=32 format=3 uid="uid://b2tdk0f1ampod"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_5b45u"]
 [ext_resource type="Texture2D" uid="uid://c23hl8603fvjx" path="res://assets/player/Character1/with hands/idle_0.png" id="2_psiif"]
 [ext_resource type="Texture2D" uid="uid://lvqgjo55fqws" path="res://assets/player/Character1/with hands/death_0.png" id="2_tgig5"]
+[ext_resource type="PackedScene" uid="uid://boikdv1eirnsh" path="res://bullet.tscn" id="2_wgysg"]
 [ext_resource type="Texture2D" uid="uid://disutkeprjyp7" path="res://assets/player/Character1/with hands/idle_1.png" id="3_8o5xw"]
 [ext_resource type="Texture2D" uid="uid://bpfqlae56rsbb" path="res://assets/player/Character1/with hands/death_1.png" id="3_i67ws"]
 [ext_resource type="Texture2D" uid="uid://bhk2ttpej3vcq" path="res://assets/player/Character1/with hands/idle_2.png" id="4_h66r7"]
@@ -141,6 +142,7 @@ animations = [{
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_5b45u")
+bullet_scene = ExtResource("2_wgysg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_oey58")
@@ -152,9 +154,7 @@ scale = Vector2(0.05, 0.05)
 [node name="Animations" type="AnimatedSprite2D" parent="CollisionShape2D/Graphics"]
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_3ggsk")
-animation = &"Death"
-frame = 9
-frame_progress = 1.0
+animation = &"Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

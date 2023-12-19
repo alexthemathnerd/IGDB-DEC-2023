@@ -11,3 +11,6 @@ func _physics_process(_delta):
 	var direction = (player_position - global_position).normalized()
 	velocity = direction * speed
 	move_and_slide()
+
+func take_damage():
+	queue_free()

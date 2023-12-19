@@ -3,14 +3,18 @@ extends CharacterBody2D
 
 enum States {IDLE, WALKING, DEATH}
 
+@export var bullet_scene: PackedScene
 @onready var animation_player = $CollisionShape2D/Graphics/Animations
 @export var move_speed = 200
+@export var shoot_distance = 10000
+var damage_amount = 15
 var _state : int = States.IDLE
 
 var dead = false
 
 func _ready():
-	$DeathTimer.start()
+	#$DeathTimer.start()
+	pass
 
 func _process(_delta):
 	if dead:
@@ -43,9 +47,15 @@ func die():
 	set_state(States.DEATH)
 
 func shoot():
-	pass
-	
-	
+	var mouse_pos = get_global_mouse_position()
+	var direction = (mouse_pos - global_position).normalized()
+	var bullet_instance = bullet_scene.instantiate()
+	bullet_instance.global_position = global_position
+	bullet_instance.direction = direction
+	get_parent().add_child(bullet_instance)
+
+
+
 func set_state(new_state: int):
 	_state = new_state
 	match _state:
