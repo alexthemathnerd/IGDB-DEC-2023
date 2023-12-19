@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk1m6bktpjvq0"
-path="res://.godot/imported/jumpEnd_2.png-f02e5ace1dcbf00d81d4585aa86acb0f.ctex"
+uid="uid://di84v30ostqre"
+path="res://.godot/imported/white_sq.png-03087eee0ba86b19552d34c4e88b14e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Character1/with hands/jumpEnd_2.png"
-dest_files=["res://.godot/imported/jumpEnd_2.png-f02e5ace1dcbf00d81d4585aa86acb0f.ctex"]
+source_file="res://assets/white_sq.png"
+dest_files=["res://.godot/imported/white_sq.png-03087eee0ba86b19552d34c4e88b14e6.ctex"]
 
 [params]
 
