@@ -1,13 +1,12 @@
 class_name Bat
 extends CharacterBody2D
 
-@export
-var speed: float = 100
-var player_position: Vector2
+var target: Player = null
 
+func _physics_process(delta):
+	if target != null:
+		velocity = (target.position - position).normalized() * 100
+		move_and_slide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta):
-	var direction = (player_position - global_position).normalized()
-	velocity = direction * speed
-	move_and_slide()
+func _on_life_span_timeout():
+	queue_free()

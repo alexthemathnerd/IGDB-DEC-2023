@@ -10,7 +10,8 @@ var _state : int = States.IDLE
 var dead = false
 
 func _ready():
-	$DeathTimer.start()
+	# $DeathTimer.start()
+	pass
 
 func _process(_delta):
 	if dead:

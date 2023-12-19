@@ -1,30 +1,22 @@
 class_name EnemyManager
 extends Node2D
 
+var world
+
 @export
 var spawn_radius: float = 50
 
-@export 
+@export
 var bat_scene: PackedScene
 
-@onready
-var spawn_path := $SpawnPath
-
-@onready
-var spawn_location := $SpawnPath/SpawnLocation
-
-func _on_timer_timeout():
+func spawn():
 	var bat = bat_scene.instantiate()
-	spawn_location.progress_ratio = randf()
-	
-	var direction = spawn_location.rotation + PI / 2
+	var random_angle = randf_range(-PI, PI)
+	var spawn_position = Vector2(spawn_radius * cos(random_angle), spawn_radius * sin(random_angle))
+	bat.position = spawn_position + global_position
+	bat.target = get_parent()
+	world.add_child(bat)
 
-	# Set the mob's position to a random location.
-	bat.position = spawn_location.position
 
-	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	bat.velocity = velocity.rotated(direction)
-
-	# Spawn the mob by adding it to the Main scene.
-	add_child(bat)
+func _on_cooldown_timeout():
+	spawn()
