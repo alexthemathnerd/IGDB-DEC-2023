@@ -13,7 +13,7 @@ point_count = 5
 script = ExtResource("1_n1u1p")
 bat_scene = ExtResource("2_yknw1")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
@@ -22,4 +22,4 @@ curve = SubResource("Curve2D_151od")
 
 [node name="SpawnLocation" type="PathFollow2D" parent="SpawnPath"]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
