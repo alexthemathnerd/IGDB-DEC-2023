@@ -1,9 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://csrqet8ge17rm"]
+[gd_scene load_steps=33 format=3 uid="uid://b2tdk0f1ampod"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_5b45u"]
 [ext_resource type="Texture2D" uid="uid://c23hl8603fvjx" path="res://assets/player/Character1/with hands/idle_0.png" id="2_psiif"]
 [ext_resource type="Texture2D" uid="uid://lvqgjo55fqws" path="res://assets/player/Character1/with hands/death_0.png" id="2_tgig5"]
-[ext_resource type="PackedScene" uid="uid://c1aghlo8hiod7" path="res://bullet.tscn" id="2_wgysg"]
+[ext_resource type="PackedScene" uid="uid://boikdv1eirnsh" path="res://bullet.tscn" id="2_wgysg"]
 [ext_resource type="Texture2D" uid="uid://disutkeprjyp7" path="res://assets/player/Character1/with hands/idle_1.png" id="3_8o5xw"]
 [ext_resource type="Texture2D" uid="uid://bpfqlae56rsbb" path="res://assets/player/Character1/with hands/death_1.png" id="3_i67ws"]
 [ext_resource type="Texture2D" uid="uid://bhk2ttpej3vcq" path="res://assets/player/Character1/with hands/idle_2.png" id="4_h66r7"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://ctnqs0gc8vp12" path="res://assets/player/Character1/with hands/hit_2.png" id="14_ietei"]
 [ext_resource type="Texture2D" uid="uid://boe84oc0th650" path="res://assets/player/Character1/with hands/walk_6.png" id="14_utwae"]
 [ext_resource type="Texture2D" uid="uid://fs11ot7o825b" path="res://assets/player/Character1/with hands/walk_7.png" id="15_5qnfr"]
+[ext_resource type="PackedScene" uid="uid://drk83sv2v3ob" path="res://DEBUG/UI.tscn" id="30_8orbp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oey58"]
 radius = 11.0
@@ -152,6 +153,7 @@ position = Vector2(0, -22)
 scale = Vector2(0.05, 0.05)
 
 [node name="Animations" type="AnimatedSprite2D" parent="CollisionShape2D/Graphics"]
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_3ggsk")
 animation = &"Idle"
 
@@ -160,5 +162,11 @@ animation = &"Idle"
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="UI" parent="." instance=ExtResource("30_8orbp")]
+offset_left = -577.0
+offset_top = -325.0
+offset_right = -577.0
+offset_bottom = -325.0
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

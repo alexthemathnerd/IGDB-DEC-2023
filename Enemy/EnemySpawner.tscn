@@ -1,15 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfwlanw2vnvhd"]
+[gd_scene load_steps=4 format=3 uid="uid://cfwlanw2vnvhd"]
 
 [ext_resource type="Script" path="res://Enemy/EnemySpawner.gd" id="1_n1u1p"]
 [ext_resource type="PackedScene" uid="uid://flv40hsun163" path="res://Enemy/Bat/Bat.tscn" id="2_yknw1"]
 
-[node name="EnemySpawner" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_151od"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="EnemyManager" type="Node2D"]
 script = ExtResource("1_n1u1p")
-spawn_radius = 500.0
 bat_scene = ExtResource("2_yknw1")
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[node name="SpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_151od")
+
+[node name="SpawnLocation" type="PathFollow2D" parent="SpawnPath"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
