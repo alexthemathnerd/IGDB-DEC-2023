@@ -25,7 +25,16 @@ func _process(_delta):
 		
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
-		
+	var mouse_pos = get_global_mouse_position()
+	var player_pos = global_position
+	var to_mouse = mouse_pos - player_pos
+	
+	var is_mouse_left = to_mouse.x < 0
+	$CollisionShape2D/Graphics/Animations.flip_h = is_mouse_left
+	
+	var angle_to_mouse = (mouse_pos - player_pos).angle()
+	if is_mouse_left:
+		angle_to_mouse -= PI
 
 func _physics_process(_delta):
 	if dead or in_hit_state:
