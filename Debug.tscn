@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://crggp3aa6tv88"]
+[gd_scene load_steps=6 format=3 uid="uid://crggp3aa6tv88"]
 
 [ext_resource type="PackedScene" uid="uid://b2tdk0f1ampod" path="res://Player.tscn" id="1_4j774"]
 [ext_resource type="PackedScene" uid="uid://cfwlanw2vnvhd" path="res://Enemy/EnemySpawner.tscn" id="2_fhd03"]
 
+[sub_resource type="Gradient" id="Gradient_berwq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1wohf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6svpr"]
+color_ramp = SubResource("Gradient_berwq")
+noise = SubResource("FastNoiseLite_1wohf")
+
 [node name="Debug" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -1.5)
+scale = Vector2(2.25, 1.2832)
+texture = SubResource("NoiseTexture2D_6svpr")
 
 [node name="Player" parent="." instance=ExtResource("1_4j774")]
 

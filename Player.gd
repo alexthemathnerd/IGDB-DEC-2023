@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 enum States {IDLE, WALKING, DEATH, HIT}
 
-@onready var animation_player = $CollisionShape2D/Graphics/Animations
+@onready var animation_player = $Graphics/Animations
 
 @export var health: int = 50
 @export var bullet_scene: PackedScene
@@ -30,7 +30,7 @@ func _process(_delta):
 	var to_mouse = mouse_pos - player_pos
 	
 	var is_mouse_left = to_mouse.x < 0
-	$CollisionShape2D/Graphics/Animations.flip_h = is_mouse_left
+	animation_player.flip_h = is_mouse_left
 	
 	var angle_to_mouse = (mouse_pos - player_pos).angle()
 	if is_mouse_left:
@@ -42,7 +42,7 @@ func _physics_process(_delta):
 	_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if _move_dir.x != 0:
-		$CollisionShape2D/Graphics/Animations.flip_h = _move_dir.x < 0
+		animation_player.flip_h = _move_dir.x < 0
 	update_state_based_on_movement()
 	velocity = _move_dir * move_speed
 	move_and_slide()
@@ -94,7 +94,7 @@ func _on_death_timer_timeout():
 	set_state(States.DEATH)
 
 
-func _on_animations_animation_finished(anim_name: String):
-	if anim_name == "Hit":
+func _on_animations_animation_finished():
+	if animation_player.animation == "Hit":
 		in_hit_state = false
 		update_state_based_on_movement()
