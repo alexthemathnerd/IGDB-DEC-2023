@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhc51a2llhs3y"]
+
+[ext_resource type="Script" path="res://Enemy/States/EnemyMove.gd" id="1_ssmqu"]
+
+[node name="EnemyMove" type="Node"]
+script = ExtResource("1_ssmqu")
