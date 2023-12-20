@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://dqvtcd447nufa" path="res://assets/player/Character1/no hands/walk_6.png" id="28_mvy6x"]
 [ext_resource type="Texture2D" uid="uid://b70r2pbgobkhk" path="res://assets/player/Character1/no hands/walk_7.png" id="29_ccdy8"]
 [ext_resource type="PackedScene" uid="uid://drk83sv2v3ob" path="res://DEBUG/UI.tscn" id="30_8orbp"]
-[ext_resource type="PackedScene" uid="uid://cljywykme83pk" path="res://weapon.tscn" id="31_cksjj"]
+[ext_resource type="PackedScene" path="res://weapon.tscn" id="31_cksjj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oey58"]
 radius = 11.0
@@ -142,27 +142,20 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_5b45u")
 bullet_scene = ExtResource("2_wgysg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_oey58")
-
-[node name="Graphics" type="Node2D" parent="CollisionShape2D"]
-position = Vector2(0, -22)
-scale = Vector2(0.05, 0.05)
-
-[node name="Animations" type="AnimatedSprite2D" parent="CollisionShape2D/Graphics"]
-sprite_frames = SubResource("SpriteFrames_3ggsk")
-animation = &"Walk"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("CapsuleShape2D_oey58")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("30_8orbp")]
 offset_left = -577.0
@@ -170,8 +163,17 @@ offset_top = -325.0
 offset_right = -577.0
 offset_bottom = -325.0
 
-[node name="ProjectileWeapon" parent="." instance=ExtResource("31_cksjj")]
-position = Vector2(-2, -1)
+[node name="Graphics" type="Node2D" parent="."]
+scale = Vector2(0.05, 0.05)
 
-[connection signal="animation_finished" from="CollisionShape2D/Graphics/Animations" to="." method="_on_animations_animation_finished"]
+[node name="Animations" type="AnimatedSprite2D" parent="Graphics"]
+sprite_frames = SubResource("SpriteFrames_3ggsk")
+animation = &"Walk"
+offset = Vector2(0, -1024)
+
+[node name="ProjectileWeapon" parent="Graphics" instance=ExtResource("31_cksjj")]
+position = Vector2(2.27374e-13, -560)
+scale = Vector2(0.4, 0.4)
+
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="animation_finished" from="Graphics/Animations" to="." method="_on_animations_animation_finished"]

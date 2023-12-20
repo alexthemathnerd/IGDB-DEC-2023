@@ -19,6 +19,9 @@ var _animation_sprite: AnimatedSprite2D = $EnemyAnimation
 var _hitbox: CollisionShape2D = $EnemyHitbox
 
 @onready
+var _attack_area: Area2D = $AttackArea
+
+@onready
 var _state_machine: StateMachine = $StateMachine
 
 func _ready():
@@ -46,3 +49,7 @@ func _die():
 	_animation_sprite.play("Die")
 	await _animation_sprite.animation_finished
 	queue_free()
+
+
+func _on_attack(body: Player):
+	body.take_damage(10)
