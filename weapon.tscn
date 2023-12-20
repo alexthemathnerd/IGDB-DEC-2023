@@ -21,3 +21,7 @@ script = ExtResource("1_rks7f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ny6c5")
 animation = &"Idle"
+offset = Vector2(0, -400)
+
+[node name="ShootPoint" type="Marker2D" parent="."]
+position = Vector2(675, 0)

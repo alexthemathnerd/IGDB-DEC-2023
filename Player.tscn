@@ -164,13 +164,8 @@ wait_time = 5.0
 one_shot = true
 
 [node name="UI" parent="." instance=ExtResource("30_8orbp")]
-offset_left = -577.0
-offset_top = -325.0
-offset_right = -577.0
-offset_bottom = -325.0
 
 [node name="ProjectileWeapon" parent="." instance=ExtResource("31_cksjj")]
-position = Vector2(-2, -1)
 
 [connection signal="animation_finished" from="CollisionShape2D/Graphics/Animations" to="." method="_on_animations_animation_finished"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
