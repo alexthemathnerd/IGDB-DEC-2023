@@ -155,7 +155,9 @@ scale = Vector2(0.05, 0.05)
 [node name="Animations" type="AnimatedSprite2D" parent="CollisionShape2D/Graphics"]
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_3ggsk")
-animation = &"Idle"
+animation = &"Hit"
+frame = 2
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -169,4 +171,5 @@ offset_top = -325.0
 offset_right = -577.0
 offset_bottom = -325.0
 
+[connection signal="animation_finished" from="CollisionShape2D/Graphics/Animations" to="." method="_on_animations_animation_finished"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
