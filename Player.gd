@@ -3,11 +3,12 @@ extends CharacterBody2D
 
 enum States {IDLE, WALKING, DEATH}
 
-@export var bullet_scene: PackedScene
 @onready var animation_player = $CollisionShape2D/Graphics/Animations
+
+@export var bullet_scene: PackedScene
 @export var move_speed = 200
 @export var shoot_distance = 10000
-var damage_amount = 15
+
 var _state : int = States.IDLE
 
 var dead = false
