@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://de13geokjbx1f"]
+
+[ext_resource type="Script" path="res://Enemy/EnemyData.gd" id="1_otdyf"]
+[ext_resource type="SpriteFrames" uid="uid://b0sfogwnjixen" path="res://Enemy/Ogre/OgreAnimation.tres" id="1_sfge3"]
+[ext_resource type="Shape2D" uid="uid://bokd206gcjm0x" path="res://Enemy/Ogre/OgreHitbox.tres" id="2_ykn7c"]
+
+[resource]
+script = ExtResource("1_otdyf")
+attack_type = 1
+health = 5
+speed = 100.0
+animation = ExtResource("1_sfge3")
+hitbox = ExtResource("2_ykn7c")

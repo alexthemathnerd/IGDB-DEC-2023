@@ -12,23 +12,18 @@ var _speed = 100
 @onready
 var _health: int
 
-var health: int:
-	get:
-		return _health
-	set(value):
-		_health = value
-		if _health <= 0:
-			die()
+@onready
+var _animation_sprite: AnimatedSprite2D = $EnemyAnimation
 
 @onready
-var _animation_sprite: AnimatedSprite2D = $AnimatedSprite2D
+var _hitbox: CollisionShape2D = $EnemyHitbox
 
 @onready
-var _hitbox: CollisionShape2D = $CollisionShape2D
-
+var _state_machine: StateMachine = $StateMachine
 
 signal enemy_died
 signal enemy_attack
+signal enemy_hurt
 
 func _ready():
 	if EnemyData != null:
@@ -36,30 +31,21 @@ func _ready():
 		_speed = inital_data.speed
 		_animation_sprite.sprite_frames = inital_data.animation
 		_hitbox.shape = inital_data.hitbox
-		_animation_sprite.play("Move")
 
-
-func _physics_process(_delta):
+func _move():
 	if target != null:
 		velocity = (target.position - position).normalized() * _speed
 		_animation_sprite.flip_h = velocity.x < 0
 		move_and_slide()
 
-func move():
-	if target != null:
-		velocity = (target.position - position).normalized() * _speed
-		move_and_slide()
-
 func damage(amount: int):
-	_animation_sprite.play("Hurt")
-	health -= amount
+	_health -= amount
+	if _health >= 1:
+		_state_machine.transition_to("EnemyHurt")
+	
 
-func die():
-	enemy_died.emit()
-	target = null
+func _die():
+	_hitbox.disabled = true
 	_animation_sprite.play("Die")
-
-
-func _on_animation_finished():
-	if _animation_sprite.animation == "Die":
-		queue_free()
+	await _animation_sprite.animation_finished
+	queue_free()

@@ -13,7 +13,13 @@ func spawn():
 	var spawn_position = Vector2(spawn_radius * cos(random_angle), spawn_radius * sin(random_angle))
 	enemy.position = spawn_position + global_position
 	enemy.target = get_parent()
-	enemy.inital_data = load("res://Enemy/Demon/DemonData.tres")
+	if randf() > 0.67:
+		enemy.inital_data = load("res://Enemy/Demon/DemonData.tres")
+	elif randf() > 0.33:
+		enemy.inital_data = load("res://Enemy/Minotaur/MinotaurData.tres")
+	else:
+		enemy.inital_data = load("res://Enemy/Ogre/OgreData.tres")
+		
 	get_parent().get_parent().add_child(enemy)
 
 
