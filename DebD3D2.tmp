@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crggp3aa6tv88"]
 
-[ext_resource type="PackedScene" uid="uid://b2tdk0f1ampod" path="res://Player.tscn" id="1_4j774"]
+[ext_resource type="PackedScene" uid="uid://csrqet8ge17rm" path="res://Player.tscn" id="1_4j774"]
 [ext_resource type="PackedScene" uid="uid://cfwlanw2vnvhd" path="res://Enemy/EnemySpawner.tscn" id="2_fhd03"]
 
 [node name="Debug" type="Node2D"]
@@ -8,3 +8,4 @@
 [node name="Player" parent="." instance=ExtResource("1_4j774")]
 
 [node name="EnemySpawner" parent="Player" instance=ExtResource("2_fhd03")]
+spawn_radius = 500.0

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfwlanw2vnvhd"]
+[gd_scene load_steps=3 format=3 uid="uid://cfwlanw2vnvhd"]
 
 [ext_resource type="Script" path="res://Enemy/EnemySpawner.gd" id="1_n1u1p"]
-[ext_resource type="PackedScene" uid="uid://flv40hsun163" path="res://Enemy/Bat/Bat.tscn" id="2_yknw1"]
 
 [sub_resource type="Curve2D" id="Curve2D_151od"]
 _data = {
@@ -11,10 +10,9 @@ point_count = 5
 
 [node name="EnemyManager" type="Node2D"]
 script = ExtResource("1_n1u1p")
-bat_scene = ExtResource("2_yknw1")
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.0
 autostart = true
 
 [node name="SpawnPath" type="Path2D" parent="."]

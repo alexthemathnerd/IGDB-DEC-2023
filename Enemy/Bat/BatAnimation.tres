@@ -1,0 +1,49 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://dn4i1jmlfm4rd"]
+
+[ext_resource type="Texture2D" uid="uid://bienyyypsfw2q" path="res://assets/enemies/Enemy3/fly_0.png" id="1_0u2xw"]
+[ext_resource type="Texture2D" uid="uid://dvkitla8kpnrk" path="res://assets/enemies/Enemy3/fly_1.png" id="2_edx7a"]
+[ext_resource type="Texture2D" uid="uid://nlrvxx0yn4tr" path="res://assets/enemies/Enemy3/fly_2.png" id="3_htiao"]
+[ext_resource type="Texture2D" uid="uid://bkqjfhjs0w8mh" path="res://assets/enemies/Enemy3/fly_3.png" id="4_ksbxr"]
+[ext_resource type="Texture2D" uid="uid://6rbnl6odeqlb" path="res://assets/enemies/Enemy3/fly_4.png" id="5_2a6u2"]
+[ext_resource type="Texture2D" uid="uid://mr50kfl8lbq1" path="res://assets/enemies/Enemy3/fly_5.png" id="6_uebb4"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Die",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0u2xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_edx7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_htiao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ksbxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2a6u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uebb4")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 15.0
+}]

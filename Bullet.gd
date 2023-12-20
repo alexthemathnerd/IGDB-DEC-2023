@@ -15,6 +15,6 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if body is Bat:
-		body.health -= 1
+	if body is Enemy:
+		(body as Enemy).damage(1)
 	queue_free()

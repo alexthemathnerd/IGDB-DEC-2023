@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://buxtvul3r5pbs"]
+
+[ext_resource type="Script" path="res://Enemy/EnemyData.gd" id="1_mloxo"]
+[ext_resource type="SpriteFrames" uid="uid://dgsy3gv4eqos6" path="res://Enemy/Minotaur/MinotaurAnimation.tres" id="1_wsyxo"]
+[ext_resource type="Shape2D" uid="uid://d7k41m02buqa" path="res://Enemy/Minotaur/MinotaurHitbox.tres" id="2_6x2sa"]
+
+[resource]
+script = ExtResource("1_mloxo")
+attack_type = 1
+health = 1
+speed = 100.0
+animation = ExtResource("1_wsyxo")
+hitbox = ExtResource("2_6x2sa")

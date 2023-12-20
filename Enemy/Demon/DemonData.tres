@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://bbp5wgb5e13lq"]
+
+[ext_resource type="Script" path="res://Enemy/EnemyData.gd" id="1_v010r"]
+[ext_resource type="SpriteFrames" uid="uid://bjw3ke2ruoqtr" path="res://Enemy/Demon/DemonAnimation.tres" id="1_x1kgq"]
+[ext_resource type="Shape2D" uid="uid://bufskvmmg3byo" path="res://Enemy/Demon/DemonHitbox.tres" id="2_74xx4"]
+
+[resource]
+script = ExtResource("1_v010r")
+attack_type = 1
+health = 2
+speed = 100.0
+animation = ExtResource("1_x1kgq")
+hitbox = ExtResource("2_74xx4")

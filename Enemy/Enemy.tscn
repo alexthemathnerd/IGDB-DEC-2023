@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://batl31cebfy4q"]
+
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_2k8ot"]
+[ext_resource type="SpriteFrames" uid="uid://dgsy3gv4eqos6" path="res://Enemy/Minotaur/MinotaurAnimation.tres" id="2_hoho5"]
+[ext_resource type="Shape2D" uid="uid://d7k41m02buqa" path="res://Enemy/Minotaur/MinotaurHitbox.tres" id="3_dxct7"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_2k8ot")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("2_hoho5")
+animation = &"Move"
+offset = Vector2(0, -1024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -29)
+shape = ExtResource("3_dxct7")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

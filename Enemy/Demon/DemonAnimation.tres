@@ -1,0 +1,109 @@
+[gd_resource type="SpriteFrames" load_steps=22 format=3 uid="uid://bjw3ke2ruoqtr"]
+
+[ext_resource type="Texture2D" uid="uid://v0x32g20akpi" path="res://assets/enemies/Enemy1/death_0.png" id="1_0hr2v"]
+[ext_resource type="Texture2D" uid="uid://y18hiu5m7qlw" path="res://assets/enemies/Enemy1/death_1.png" id="2_2tngm"]
+[ext_resource type="Texture2D" uid="uid://jdyljl8idq7m" path="res://assets/enemies/Enemy1/death_2.png" id="3_seblw"]
+[ext_resource type="Texture2D" uid="uid://dd6uwthuxtwf7" path="res://assets/enemies/Enemy1/death_3.png" id="4_2rbfp"]
+[ext_resource type="Texture2D" uid="uid://c3hgq2wrsnsss" path="res://assets/enemies/Enemy1/death_4.png" id="5_1jxuk"]
+[ext_resource type="Texture2D" uid="uid://bt0p35huoeron" path="res://assets/enemies/Enemy1/death_5.png" id="6_3rn6s"]
+[ext_resource type="Texture2D" uid="uid://bfvr78gfmskti" path="res://assets/enemies/Enemy1/death_6.png" id="7_hrkgs"]
+[ext_resource type="Texture2D" uid="uid://l5ufgoaqmcf" path="res://assets/enemies/Enemy1/death_7.png" id="8_efn4o"]
+[ext_resource type="Texture2D" uid="uid://c8m00fp85451w" path="res://assets/enemies/Enemy1/death_8.png" id="9_klj7m"]
+[ext_resource type="Texture2D" uid="uid://bvosjhww7ad4w" path="res://assets/enemies/Enemy1/death_9.png" id="10_hff0u"]
+[ext_resource type="Texture2D" uid="uid://ck5uk1ij2j4xs" path="res://assets/enemies/Enemy1/hit_0.png" id="11_cid2e"]
+[ext_resource type="Texture2D" uid="uid://cyo6t8w55ddsr" path="res://assets/enemies/Enemy1/hit_1.png" id="12_j40bx"]
+[ext_resource type="Texture2D" uid="uid://deiwa6luh4qyt" path="res://assets/enemies/Enemy1/hit_2.png" id="13_xm178"]
+[ext_resource type="Texture2D" uid="uid://coswh7jgwm6ja" path="res://assets/enemies/Enemy1/walk_0.png" id="14_omtcl"]
+[ext_resource type="Texture2D" uid="uid://cbd8pytpifc82" path="res://assets/enemies/Enemy1/walk_1.png" id="15_b5qls"]
+[ext_resource type="Texture2D" uid="uid://baxx8bna0bt5y" path="res://assets/enemies/Enemy1/walk_2.png" id="16_ubaak"]
+[ext_resource type="Texture2D" uid="uid://bn0gysbjcy5jn" path="res://assets/enemies/Enemy1/walk_3.png" id="17_jej1a"]
+[ext_resource type="Texture2D" uid="uid://bmote3vid0ute" path="res://assets/enemies/Enemy1/walk_4.png" id="18_cal8p"]
+[ext_resource type="Texture2D" uid="uid://djm6u7ncckarw" path="res://assets/enemies/Enemy1/walk_5.png" id="19_qcsat"]
+[ext_resource type="Texture2D" uid="uid://dwuarumam0qs7" path="res://assets/enemies/Enemy1/walk_6.png" id="20_aones"]
+[ext_resource type="Texture2D" uid="uid://d2kx6xfqi6ox" path="res://assets/enemies/Enemy1/walk_7.png" id="21_wq6t0"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0hr2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2tngm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_seblw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2rbfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1jxuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3rn6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hrkgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_efn4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_klj7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hff0u")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_cid2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_j40bx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xm178")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_omtcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_b5qls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ubaak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jej1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_cal8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qcsat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_aones")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wq6t0")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 15.0
+}]
