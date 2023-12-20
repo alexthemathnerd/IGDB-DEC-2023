@@ -9,12 +9,16 @@ var spawn_radius: float = 500
 @export
 var bat_scene: PackedScene
 
+func handle_death(bat: Bat):
+	bat.queue_free()
+
 func spawn():
 	var bat = bat_scene.instantiate()
 	var random_angle = randf_range(-PI, PI)
 	var spawn_position = Vector2(spawn_radius * cos(random_angle), spawn_radius * sin(random_angle))
 	bat.position = spawn_position + global_position
 	bat.target = get_parent()
+	bat.died.connect(handle_death)
 	get_parent().get_parent().add_child(bat)
 
 
