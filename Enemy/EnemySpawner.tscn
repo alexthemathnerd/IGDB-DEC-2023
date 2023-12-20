@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfwlanw2vnvhd"]
+[gd_scene load_steps=2 format=3 uid="uid://cfwlanw2vnvhd"]
 
 [ext_resource type="Script" path="res://Enemy/EnemySpawner.gd" id="1_n1u1p"]
-
-[sub_resource type="Curve2D" id="Curve2D_151od"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0)
-}
-point_count = 5
 
 [node name="EnemyManager" type="Node2D"]
 script = ExtResource("1_n1u1p")
@@ -14,10 +8,5 @@ script = ExtResource("1_n1u1p")
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
-
-[node name="SpawnPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_151od")
-
-[node name="SpawnLocation" type="PathFollow2D" parent="SpawnPath"]
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bvmj8phcfmp1j" path="res://Enemy/States/EnemyHurt.tscn" id="7_xgx2k"]
 
 [node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_2k8ot")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
