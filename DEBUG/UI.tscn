@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://drk83sv2v3ob"]
+[gd_scene load_steps=2 format=3 uid="uid://drk83sv2v3ob"]
 
 [ext_resource type="Script" path="res://DEBUG/UI.gd" id="1_mv2qy"]
-[ext_resource type="Texture2D" uid="uid://0g7w31e7qjcm" path="res://assets/weaponR1.png" id="2_3tksl"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_mv2qy")
@@ -17,57 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HUD"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="WeaponContainer" type="HBoxContainer" parent="HUD"]
-layout_mode = 0
-offset_top = 827.0
-offset_right = 1910.0
-offset_bottom = 1074.0
-alignment = 1
-
-[node name="Weapon1" type="TextureRect" parent="HUD/WeaponContainer"]
-layout_mode = 2
-texture = ExtResource("2_3tksl")
-expand_mode = 2
-
-[node name="Weapon2" type="TextureRect" parent="HUD/WeaponContainer"]
-layout_mode = 2
-texture = ExtResource("2_3tksl")
-expand_mode = 2
-
-[node name="Weapon3" type="TextureRect" parent="HUD/WeaponContainer"]
-layout_mode = 2
-texture = ExtResource("2_3tksl")
-expand_mode = 2
-
-[node name="Weapon4" type="TextureRect" parent="HUD/WeaponContainer"]
-layout_mode = 2
-texture = ExtResource("2_3tksl")
-expand_mode = 2
-
-[node name="WeaponContainer2" type="HBoxContainer" parent="HUD"]
-layout_mode = 0
-offset_top = 827.0
-offset_right = 1910.0
-offset_bottom = 1074.0
-theme_override_constants/separation = 175
-alignment = 1
-
-[node name="Weapon1" type="Label" parent="HUD/WeaponContainer2"]
-layout_mode = 2
-text = "Weapon1"
-
-[node name="Weapon2" type="Label" parent="HUD/WeaponContainer2"]
-layout_mode = 2
-text = "Weapon2"
-
-[node name="Weapon3" type="Label" parent="HUD/WeaponContainer2"]
-layout_mode = 2
-text = "Weapon3"
-
-[node name="Weapon4" type="Label" parent="HUD/WeaponContainer2"]
-layout_mode = 2
-text = "Weapon4"
-horizontal_alignment = 1

@@ -8,7 +8,6 @@ var direction = Vector2()
 
 
 
-
 func _physics_process(delta):
 	var velocity = direction * speed
 	position += velocity * delta

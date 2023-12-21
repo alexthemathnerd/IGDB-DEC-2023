@@ -6,7 +6,6 @@ enum States {IDLE, WALKING, DEATH, HIT}
 @onready var animation_player = $Graphics/Animations
 
 @export var health: int = 50
-@export var bullet_scene: PackedScene
 @export var move_speed = 200
 @export var shoot_distance = 10000
 
@@ -22,9 +21,6 @@ func _ready():
 func _process(_delta):
 	if dead:
 		return
-		
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
 	var mouse_pos = get_global_mouse_position()
 	var player_pos = global_position
 	var to_mouse = mouse_pos - player_pos
@@ -61,13 +57,6 @@ func die():
 	dead = true
 	set_state(States.DEATH)
 
-func shoot():
-	var mouse_pos = get_global_mouse_position()
-	var direction = (mouse_pos - global_position).normalized()
-	var bullet_instance = bullet_scene.instantiate()
-	bullet_instance.global_position = global_position
-	bullet_instance.direction = direction
-	get_parent().add_child(bullet_instance)
 
 func update_state_based_on_movement():
 	if _move_dir != Vector2.ZERO:
