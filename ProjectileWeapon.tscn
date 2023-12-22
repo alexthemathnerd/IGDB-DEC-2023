@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cljywykme83pk"]
+
+[ext_resource type="Script" path="res://ProjectileWeapon.gd" id="1_q1yj1"]
+[ext_resource type="PackedScene" uid="uid://boikdv1eirnsh" path="res://bullet.tscn" id="2_tajxc"]
+[ext_resource type="Texture2D" uid="uid://0g7w31e7qjcm" path="res://assets/weaponR1.png" id="3_3o3al"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ny6c5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3o3al")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="ProjectileWeapon" type="Node2D"]
+scale = Vector2(0.02, 0.02)
+script = ExtResource("1_q1yj1")
+bullet_scene = ExtResource("2_tajxc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ny6c5")
+animation = &"Idle"
+offset = Vector2(0, -400)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 0.15
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

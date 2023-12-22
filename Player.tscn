@@ -1,7 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://b2tdk0f1ampod"]
+[gd_scene load_steps=33 format=3 uid="uid://b2tdk0f1ampod"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_5b45u"]
-[ext_resource type="PackedScene" uid="uid://boikdv1eirnsh" path="res://bullet.tscn" id="2_wgysg"]
 [ext_resource type="Texture2D" uid="uid://rcdites5bghi" path="res://assets/player/Character1/no hands/death_0.png" id="3_qolrr"]
 [ext_resource type="Texture2D" uid="uid://c1e4df7f5dipm" path="res://assets/player/Character1/no hands/death_1.png" id="4_4yq0u"]
 [ext_resource type="Texture2D" uid="uid://dai3rwta4rxvn" path="res://assets/player/Character1/no hands/death_2.png" id="5_4jnnf"]
@@ -30,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dqvtcd447nufa" path="res://assets/player/Character1/no hands/walk_6.png" id="28_mvy6x"]
 [ext_resource type="Texture2D" uid="uid://b70r2pbgobkhk" path="res://assets/player/Character1/no hands/walk_7.png" id="29_ccdy8"]
 [ext_resource type="PackedScene" uid="uid://drk83sv2v3ob" path="res://DEBUG/UI.tscn" id="30_8orbp"]
-[ext_resource type="PackedScene" path="res://weapon.tscn" id="31_cksjj"]
+[ext_resource type="PackedScene" uid="uid://cljywykme83pk" path="res://ProjectileWeapon.tscn" id="31_cksjj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oey58"]
 radius = 11.0
@@ -145,7 +144,6 @@ collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_5b45u")
-bullet_scene = ExtResource("2_wgysg")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -156,12 +154,9 @@ position = Vector2(0, -28)
 shape = SubResource("CapsuleShape2D_oey58")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="UI" parent="." instance=ExtResource("30_8orbp")]
-offset_left = -577.0
-offset_top = -325.0
-offset_right = -577.0
-offset_bottom = -325.0
 
 [node name="Graphics" type="Node2D" parent="."]
 scale = Vector2(0.05, 0.05)
@@ -171,9 +166,8 @@ sprite_frames = SubResource("SpriteFrames_3ggsk")
 animation = &"Walk"
 offset = Vector2(0, -1024)
 
-[node name="ProjectileWeapon" parent="Graphics" instance=ExtResource("31_cksjj")]
-position = Vector2(2.27374e-13, -560)
-scale = Vector2(0.4, 0.4)
+[node name="ProjectileWeapon" parent="." instance=ExtResource("31_cksjj")]
+position = Vector2(1.13687e-14, -28)
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="animation_finished" from="Graphics/Animations" to="." method="_on_animations_animation_finished"]

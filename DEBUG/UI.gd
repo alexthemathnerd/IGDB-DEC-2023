@@ -1,7 +1,7 @@
 class_name UI
-extends Control
+extends CanvasLayer
 
 
 func _process(_delta):
-	$RichTextLabel.text = str(Engine.get_frames_per_second())
+	$HUD/RichTextLabel.text = str(Engine.get_frames_per_second())
 	
