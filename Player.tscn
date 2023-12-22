@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dqvtcd447nufa" path="res://assets/player/Character1/no hands/walk_6.png" id="28_mvy6x"]
 [ext_resource type="Texture2D" uid="uid://b70r2pbgobkhk" path="res://assets/player/Character1/no hands/walk_7.png" id="29_ccdy8"]
 [ext_resource type="PackedScene" uid="uid://drk83sv2v3ob" path="res://DEBUG/UI.tscn" id="30_8orbp"]
-[ext_resource type="PackedScene" uid="uid://cljywykme83pk" path="res://weapon.tscn" id="31_cksjj"]
+[ext_resource type="PackedScene" uid="uid://cljywykme83pk" path="res://ProjectileWeapon.tscn" id="31_cksjj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oey58"]
 radius = 11.0
