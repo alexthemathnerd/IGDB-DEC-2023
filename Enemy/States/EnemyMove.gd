@@ -1,4 +1,3 @@
-class_name EnemyMove
 extends EnemyState
 
 func enter(_msg := {}) -> void:

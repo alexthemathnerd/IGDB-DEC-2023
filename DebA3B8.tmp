@@ -22,4 +22,3 @@ texture = SubResource("NoiseTexture2D_6svpr")
 
 [node name="WaveSpawner" parent="Player" instance=ExtResource("2_3duhb")]
 spawn_area = NodePath("../..")
-target = NodePath("..")

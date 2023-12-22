@@ -18,12 +18,20 @@ script = ExtResource("1_2k8ot")
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("2_taqrg")
-animation = &"Move"
+animation = &"Die"
 offset = Vector2(0, -1024)
 
 [node name="EnemyHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -29)
 shape = ExtResource("3_ibevh")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="AttackHitbox" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_4lyf3")
 
 [node name="StateMachine" parent="." instance=ExtResource("4_u5164")]
 initial_state = NodePath("EnemyMove")
@@ -33,13 +41,5 @@ initial_state = NodePath("EnemyMove")
 [node name="EnemyDie" parent="StateMachine" instance=ExtResource("6_6s5q6")]
 
 [node name="EnemyHurt" parent="StateMachine" instance=ExtResource("7_xgx2k")]
-
-[node name="AttackArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="AttackHitbox" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(0, -27)
-shape = SubResource("RectangleShape2D_4lyf3")
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack"]

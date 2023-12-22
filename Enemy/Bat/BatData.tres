@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("1_kmqrb")
+attack_type = 1
 health = 1
 speed = 100.0
 animation = ExtResource("1_3ch1p")

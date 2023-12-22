@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=2 format=3 uid="uid://b2xag6n6jykig"]
+
+[ext_resource type="Script" path="res://Wave/WaveData.gd" id="1_v4jre"]
+
+[resource]
+script = ExtResource("1_v4jre")
+enemy_types = Array[String](["DEMON", "OGRE", "MINOTAUR"])
+enemy_weights = Array[int]([5, 2, 1])

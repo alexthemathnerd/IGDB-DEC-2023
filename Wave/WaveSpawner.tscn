@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvwqd4rxirx64"]
+
+[ext_resource type="PackedScene" uid="uid://48comtybyx7e" path="res://Wave/Wave.tscn" id="1_neh4n"]
+[ext_resource type="Script" path="res://Wave/WaveSpawner.gd" id="1_qosvj"]
+
+[node name="WaveSpawner" type="Node2D"]
+script = ExtResource("1_qosvj")
+spawn_area = NodePath("Wave")
+
+[node name="Wave" parent="." instance=ExtResource("1_neh4n")]

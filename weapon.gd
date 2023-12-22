@@ -15,4 +15,3 @@ func _process(delta):
 		angle_to_mouse -= PI
 	
 	rotation = angle_to_mouse
-	print(rotation)

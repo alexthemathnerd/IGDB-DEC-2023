@@ -1,19 +1,22 @@
 class_name EnemyData
 extends Resource
 
-enum AttackType { PROJECTILE, MELEE }
+const EnemyType: Dictionary = { 
+	BAT = "res://Enemy/Bat/BatData.tres", 
+	DEMON = "res://Enemy/Demon/DemonData.tres",
+	MINOTAUR = "res://Enemy/Minotaur/MinotaurData.tres",
+	OGRE = "res://Enemy/Ogre/OgreData.tres",
+}
 
-@export
-var attack_type: AttackType = AttackType.MELEE
+@export_enum("BAT", "DEMON", "MINOTAUR", "OGRE") var enemy_type: String
+@export var animation: SpriteFrames
+@export var hitbox: Shape2D
 
-@export
-var health: int = 1
+var health: int
+var speed: float
 
-@export
-var speed: float = 100
+static func get_data(enemy_name: String) -> EnemyData:
+	return load(EnemyType[enemy_name]) as EnemyData
 
-@export
-var animation: SpriteFrames
 
-@export
-var hitbox: Shape2D
+

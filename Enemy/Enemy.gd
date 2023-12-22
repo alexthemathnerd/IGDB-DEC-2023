@@ -1,28 +1,23 @@
 class_name Enemy
 extends CharacterBody2D
 
+
+
 var target: Node2D = null
 
-@export
-var initial_data: EnemyData
+@export var initial_data: EnemyData
 
-@onready
-var _speed = 100
+@onready var _speed: float
 
-@onready
-var _health: int
+@onready var _health: int
 
-@onready
-var _animation_sprite: AnimatedSprite2D = $EnemyAnimation
+@onready var _animation_sprite: AnimatedSprite2D = $EnemyAnimation
 
-@onready
-var _hitbox: CollisionShape2D = $EnemyHitbox
+@onready var _hitbox: CollisionShape2D = $EnemyHitbox
 
-@onready
-var _attack_area: Area2D = $AttackArea
+@onready var _attack_area: Area2D = $AttackArea
 
-@onready
-var _state_machine: StateMachine = $StateMachine
+@onready var _state_machine: StateMachine = $StateMachine
 
 func _ready():
 	if initial_data != null:

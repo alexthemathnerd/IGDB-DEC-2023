@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://48comtybyx7e"]
+
+[ext_resource type="Script" path="res://Wave/Wave.gd" id="1_0l3w4"]
+
+[node name="Wave" type="Node"]
+script = ExtResource("1_0l3w4")
+
+[node name="WavePulse" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="WavePulse" to="." method="_on_wave_pulse"]
