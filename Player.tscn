@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dqvtcd447nufa" path="res://assets/player/Character1/no hands/walk_6.png" id="28_mvy6x"]
 [ext_resource type="Texture2D" uid="uid://b70r2pbgobkhk" path="res://assets/player/Character1/no hands/walk_7.png" id="29_ccdy8"]
 [ext_resource type="PackedScene" uid="uid://drk83sv2v3ob" path="res://DEBUG/UI.tscn" id="30_8orbp"]
-[ext_resource type="PackedScene" uid="uid://cljywykme83pk" path="res://ProjectileWeapon.tscn" id="31_cksjj"]
+[ext_resource type="PackedScene" uid="uid://cljywykme83pk" path="res://Weapons/ProjectileWeapon.tscn" id="30_nsjjg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oey58"]
 radius = 11.0
@@ -84,7 +84,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Hit",
-"speed": 15.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -154,7 +154,6 @@ position = Vector2(0, -28)
 shape = SubResource("CapsuleShape2D_oey58")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 
 [node name="UI" parent="." instance=ExtResource("30_8orbp")]
 
@@ -163,11 +162,12 @@ scale = Vector2(0.05, 0.05)
 
 [node name="Animations" type="AnimatedSprite2D" parent="Graphics"]
 sprite_frames = SubResource("SpriteFrames_3ggsk")
-animation = &"Walk"
+animation = &"Hit"
 offset = Vector2(0, -1024)
 
-[node name="ProjectileWeapon" parent="." instance=ExtResource("31_cksjj")]
-position = Vector2(1.13687e-14, -28)
+[node name="ProjectileWeapon" parent="." instance=ExtResource("30_nsjjg")]
+position = Vector2(0, -22)
 
+[connection signal="player_died" from="." to="ProjectileWeapon" method="_on_player_player_died"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="animation_finished" from="Graphics/Animations" to="." method="_on_animations_animation_finished"]

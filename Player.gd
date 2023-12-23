@@ -9,17 +9,19 @@ enum States {IDLE, WALKING, DEATH, HIT}
 @export var move_speed = 200
 @export var shoot_distance = 10000
 
+signal player_died
+
 var _state : int = States.IDLE
 var _move_dir: Vector2 = Vector2.ZERO
 
 var in_hit_state = false
-var dead = false
+var is_dead = false
 
 func _ready():
 	pass
 
 func _process(_delta):
-	if dead:
+	if is_dead:
 		return
 	var mouse_pos = get_global_mouse_position()
 	var player_pos = global_position
@@ -33,12 +35,10 @@ func _process(_delta):
 		angle_to_mouse -= PI
 
 func _physics_process(_delta):
-	if dead or in_hit_state:
+	if is_dead:
 		return
 	_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	if _move_dir.x != 0:
-		animation_player.flip_h = _move_dir.x < 0
 	update_state_based_on_movement()
 	velocity = _move_dir * move_speed
 	move_and_slide()
@@ -52,14 +52,16 @@ func take_damage(damage_amount: int):
 		set_state(States.HIT)
 
 func die():
-	if dead:
+	if is_dead:
 		return
-	dead = true
+	is_dead = true
 	set_state(States.DEATH)
 
 
 func update_state_based_on_movement():
-	if _move_dir != Vector2.ZERO:
+	if _move_dir != Vector2.ZERO and in_hit_state:
+		set_state(States.HIT)
+	elif _move_dir != Vector2.ZERO and !in_hit_state:
 		set_state(States.WALKING)
 	else:
 		set_state(States.IDLE)
@@ -74,9 +76,13 @@ func set_state(new_state: int):
 			animation_player.play("Walk")
 		States.DEATH:
 			animation_player.play("Death")
+			player_died.emit()
 		States.HIT:
 			animation_player.play("Hit")
 			in_hit_state = true
+			
+func get_is_dead():
+	return is_dead
 
 
 func _on_death_timer_timeout():

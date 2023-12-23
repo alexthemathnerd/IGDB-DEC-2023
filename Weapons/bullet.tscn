@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://boikdv1eirnsh"]
+
+[ext_resource type="Script" path="res://Weapons/Bullet.gd" id="1_lgsbb"]
+[ext_resource type="PackedScene" uid="uid://clnilyeeyyx02" path="res://Weapons/BananaPeel.tscn" id="2_wq3q3"]
+[ext_resource type="Texture2D" uid="uid://btsutlc6tardw" path="res://assets/Weapon/peel_projectile.png" id="2_xjpv3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c7ksq"]
+radius = 4.0
+height = 24.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_lgsbb")
+banana_peel_scene = ExtResource("2_wq3q3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_c7ksq")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("2_xjpv3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

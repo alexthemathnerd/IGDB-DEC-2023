@@ -1,7 +1,7 @@
 class_name Bullet
 extends Area2D
 
-
+@export var banana_peel_scene: PackedScene
 
 @export var speed = 400
 var direction = Vector2()
@@ -22,4 +22,7 @@ func _on_body_entered(body):
 
 
 func _on_despawn_timer_timeout():
+	var banana_peel = banana_peel_scene.instantiate()
+	banana_peel.global_position = global_position
+	get_parent().get_parent().add_child(banana_peel)
 	queue_free()
