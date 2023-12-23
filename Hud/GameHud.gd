@@ -16,4 +16,4 @@ func _ready():
 func _on_player_hurt(damage: int):
 	for i in range(damage):
 		if hearts.get_child_count() != 0:
-			hearts.remove_child(hearts.get_child(damage))
+			hearts.remove_child(hearts.get_child(i))

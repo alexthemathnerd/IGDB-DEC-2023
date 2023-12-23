@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcvn61xg40y6i"]
+[gd_scene load_steps=6 format=3 uid="uid://bcvn61xg40y6i"]
 
 [ext_resource type="PackedScene" uid="uid://b2tdk0f1ampod" path="res://Player/Player.tscn" id="1_k6lft"]
+[ext_resource type="Script" path="res://Level/Demo.gd" id="1_wrooe"]
 [ext_resource type="PackedScene" uid="uid://bvwqd4rxirx64" path="res://Wave/WaveSpawner.tscn" id="2_dv644"]
 [ext_resource type="Texture2D" uid="uid://c75aefpwxga0b" path="res://assets/ground2_white.png" id="3_o4hlk"]
 
@@ -27,3 +28,5 @@ z_index = -1
 material = SubResource("CanvasItemMaterial_27x06")
 texture = ExtResource("3_o4hlk")
 centered = false
+
+[connection signal="player_died" from="Player" to="." method="_on_player_died"]

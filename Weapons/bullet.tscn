@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://btsutlc6tardw" path="res://assets/Weapon/peel_projectile.png" id="2_xjpv3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c7ksq"]
-radius = 3.0
-height = 16.0
+radius = 4.0
+height = 24.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
@@ -18,6 +18,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_c7ksq")
 
 [node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

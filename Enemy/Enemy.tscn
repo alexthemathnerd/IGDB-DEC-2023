@@ -12,7 +12,7 @@
 size = Vector2(27, 13)
 
 [node name="Enemy" type="CharacterBody2D"]
-z_index = -1
+motion_mode = 1
 script = ExtResource("1_2k8ot")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
@@ -43,7 +43,7 @@ initial_state = NodePath("EnemyMove")
 [node name="EnemyHurt" parent="StateMachine" instance=ExtResource("7_xgx2k")]
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.7
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_exited"]

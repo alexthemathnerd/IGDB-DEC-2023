@@ -8,6 +8,7 @@ var target: Node2D = null
 @export var initial_data: EnemyData
 
 @onready var _speed: float
+var _org_speed: float
 
 @onready var _health: int
 
@@ -25,6 +26,7 @@ func _ready():
 	if initial_data != null:
 		_health = initial_data.health
 		_speed = initial_data.speed
+		_org_speed = _speed
 		_animation_sprite.sprite_frames = initial_data.animation
 		_hitbox.shape = initial_data.hitbox
 
@@ -34,6 +36,11 @@ func _move():
 		_animation_sprite.flip_h = velocity.x < 0
 		move_and_slide()
 		
+
+func slow():
+	_speed = _org_speed * 0.5
+	await get_tree().create_timer(0.7).timeout
+	_speed = _org_speed
 
 func damage(amount: int):
 	_health -= amount
