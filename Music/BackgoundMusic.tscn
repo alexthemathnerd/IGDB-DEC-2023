@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnjq76fm0usj7"]
+
+[ext_resource type="AudioStream" uid="uid://bugyjsflyso3s" path="res://assets/music/250754__cebuana__one.mp3" id="1_lki2x"]
+
+[node name="Background Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_lki2x")
+autoplay = true
+bus = &"Background"

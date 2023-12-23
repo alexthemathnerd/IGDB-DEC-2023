@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://crggp3aa6tv88"]
 
-[ext_resource type="PackedScene" uid="uid://b2tdk0f1ampod" path="res://Player.tscn" id="1_4j774"]
+[ext_resource type="PackedScene" uid="uid://b2tdk0f1ampod" path="res://Player/Player.tscn" id="1_4j774"]
 [ext_resource type="PackedScene" uid="uid://bvwqd4rxirx64" path="res://Wave/WaveSpawner.tscn" id="2_3duhb"]
 
 [sub_resource type="Gradient" id="Gradient_berwq"]
