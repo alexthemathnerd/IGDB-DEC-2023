@@ -47,7 +47,6 @@ func _spawn(enemy_type: String):
 	data.health = 2
 	data.speed = 100
 	enemy.initial_data = data
-	print("Target: ", spawner.target)
 	enemy.target = spawner.get_node(spawner.target)
 	enemy.request_ready()
 	
