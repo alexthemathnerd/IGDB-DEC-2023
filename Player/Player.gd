@@ -79,9 +79,11 @@ func set_state(new_state: int):
 			animation_player.play("Walk")
 		States.DEATH:
 			animation_player.play("Death")
+			$DeathSound.play()
 			player_died.emit()
 		States.HIT:
 			animation_player.play("Hit")
+			$HurtSound.play()
 			in_hit_state = true
 			
 func get_is_dead():

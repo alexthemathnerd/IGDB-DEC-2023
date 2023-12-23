@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b2tdk0f1ampod"]
+[gd_scene load_steps=35 format=3 uid="uid://b2tdk0f1ampod"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_5b45u"]
 [ext_resource type="Texture2D" uid="uid://rcdites5bghi" path="res://assets/player/Character1/no hands/death_0.png" id="3_qolrr"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://b70r2pbgobkhk" path="res://assets/player/Character1/no hands/walk_7.png" id="29_ccdy8"]
 [ext_resource type="PackedScene" uid="uid://drk83sv2v3ob" path="res://DEBUG/UI.tscn" id="30_8orbp"]
 [ext_resource type="PackedScene" uid="uid://cljywykme83pk" path="res://Weapons/ProjectileWeapon.tscn" id="30_nsjjg"]
+[ext_resource type="AudioStream" uid="uid://ced33kwxvc0vs" path="res://assets/music/413174__micahlg__male_hurt11.ogg" id="31_c1jb1"]
+[ext_resource type="AudioStream" uid="uid://b0kfni3tvyo0g" path="res://assets/music/death_sound.mp3" id="32_dvlqk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oey58"]
 radius = 11.0
@@ -170,6 +172,15 @@ offset = Vector2(0, -1024)
 position = Vector2(0, -22)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_c1jb1")
+bus = &"Vfx"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_dvlqk")
+bus = &"Vfx"
 
 [connection signal="player_died" from="." to="ProjectileWeapon" method="_on_player_player_died"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
