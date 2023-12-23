@@ -12,6 +12,7 @@
 size = Vector2(27, 14)
 
 [node name="Enemy" type="CharacterBody2D"]
+z_index = -1
 script = ExtResource("1_2k8ot")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]

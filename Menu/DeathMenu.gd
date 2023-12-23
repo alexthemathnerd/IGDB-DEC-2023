@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_replay_pressed():
-	pass # Replace with function body.
+	pass
 
 
 func _on_exit_pressed():

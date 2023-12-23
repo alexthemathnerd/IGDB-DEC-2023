@@ -49,13 +49,14 @@ func shoot():
 	var angle_to_mouse = direction.angle()
 	bullet_instance.rotation = angle_to_mouse
 	bullet_instance.direction = direction
+	$ShootSound.play()
 	get_parent().add_child(bullet_instance)
 
 func set_fire_rate(new_rate: float):
 	fire_rate_timer.wait_time = new_rate
 
 func _on_fire_rate_timer_timeout():
-	if is_firing:
+	if is_firing and can_shoot:
 		first_shot_fired = true
 		shoot()
 		animated_sprite.play("peeled")
@@ -67,3 +68,4 @@ func _on_fire_rate_timer_timeout():
 
 func _on_player_player_died():
 	can_shoot = false
+	

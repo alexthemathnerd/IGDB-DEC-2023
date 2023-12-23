@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04yvw"]
 
 [node name="BananaPeel" type="Area2D"]
+z_index = -2
 script = ExtResource("1_v2nlf")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -16,6 +17,8 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_lr5hf")
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 2.0
+autostart = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

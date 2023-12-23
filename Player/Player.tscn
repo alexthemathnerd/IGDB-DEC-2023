@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://b2tdk0f1ampod"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_5b45u"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_5b45u"]
 [ext_resource type="Texture2D" uid="uid://rcdites5bghi" path="res://assets/player/Character1/no hands/death_0.png" id="3_qolrr"]
 [ext_resource type="Texture2D" uid="uid://c1e4df7f5dipm" path="res://assets/player/Character1/no hands/death_1.png" id="4_4yq0u"]
 [ext_resource type="Texture2D" uid="uid://dai3rwta4rxvn" path="res://assets/player/Character1/no hands/death_2.png" id="5_4jnnf"]
@@ -153,8 +153,6 @@ one_shot = true
 position = Vector2(0, -28)
 shape = SubResource("CapsuleShape2D_oey58")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="UI" parent="." instance=ExtResource("30_8orbp")]
 
 [node name="Graphics" type="Node2D" parent="."]
@@ -167,6 +165,8 @@ offset = Vector2(0, -1024)
 
 [node name="ProjectileWeapon" parent="." instance=ExtResource("30_nsjjg")]
 position = Vector2(0, -22)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="player_died" from="." to="ProjectileWeapon" method="_on_player_player_died"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
