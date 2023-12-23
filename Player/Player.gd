@@ -37,7 +37,7 @@ func _process(_delta):
 func _physics_process(_delta):
 	if is_dead:
 		return
-	_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	
 	update_state_based_on_movement()
 	velocity = _move_dir * move_speed
@@ -76,9 +76,11 @@ func set_state(new_state: int):
 			animation_player.play("Walk")
 		States.DEATH:
 			animation_player.play("Death")
+			$DeathSound.play()
 			player_died.emit()
 		States.HIT:
 			animation_player.play("Hit")
+			$HurtSound.play()
 			in_hit_state = true
 			
 func get_is_dead():
