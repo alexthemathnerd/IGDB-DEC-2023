@@ -10,6 +10,7 @@ enum States {IDLE, WALKING, DEATH, HIT}
 @export var shoot_distance = 10000
 
 signal player_died
+signal player_hurt(amount: int)
 
 var _state : int = States.IDLE
 var _move_dir: Vector2 = Vector2.ZERO
@@ -37,7 +38,7 @@ func _process(_delta):
 func _physics_process(_delta):
 	if is_dead:
 		return
-	_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	
 	update_state_based_on_movement()
 	velocity = _move_dir * move_speed
@@ -45,11 +46,13 @@ func _physics_process(_delta):
 
 
 func take_damage(damage_amount: int):
+	player_hurt.emit(damage_amount)
 	health -= damage_amount
 	if health <= 0:
 		die()
 	else:
 		set_state(States.HIT)
+		
 
 func die():
 	if is_dead:
@@ -59,9 +62,9 @@ func die():
 
 
 func update_state_based_on_movement():
-	if _move_dir != Vector2.ZERO and in_hit_state:
+	if in_hit_state:
 		set_state(States.HIT)
-	elif _move_dir != Vector2.ZERO and !in_hit_state:
+	elif _move_dir != Vector2.ZERO:
 		set_state(States.WALKING)
 	else:
 		set_state(States.IDLE)

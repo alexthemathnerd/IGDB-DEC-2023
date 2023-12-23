@@ -84,7 +84,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Hit",
-"speed": 25.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -154,6 +154,7 @@ position = Vector2(0, -28)
 shape = SubResource("CapsuleShape2D_oey58")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.75, 1.75)
 
 [node name="UI" parent="." instance=ExtResource("30_8orbp")]
 

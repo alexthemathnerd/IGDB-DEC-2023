@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcvn61xg40y6i"]
+[gd_scene load_steps=4 format=3 uid="uid://bcvn61xg40y6i"]
 
 [ext_resource type="PackedScene" uid="uid://b2tdk0f1ampod" path="res://Player.tscn" id="1_k6lft"]
+[ext_resource type="Script" path="res://Level/Demo.gd" id="1_wrooe"]
 [ext_resource type="PackedScene" uid="uid://bvwqd4rxirx64" path="res://Wave/WaveSpawner.tscn" id="2_dv644"]
 
 [node name="Demo" type="Node2D"]
+script = ExtResource("1_wrooe")
 
 [node name="Player" parent="." instance=ExtResource("1_k6lft")]
+health = 5
 
 [node name="WaveSpawner" parent="Player" instance=ExtResource("2_dv644")]
 spawn_area = NodePath("../..")
 target = NodePath("..")
+
+[connection signal="player_died" from="Player" to="." method="_on_player_died"]

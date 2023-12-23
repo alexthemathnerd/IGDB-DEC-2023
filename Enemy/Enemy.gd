@@ -15,9 +15,11 @@ var target: Node2D = null
 
 @onready var _hitbox: CollisionShape2D = $EnemyHitbox
 
-@onready var _attack_area: Area2D = $AttackArea
+@onready var _attack_hitbox: CollisionShape2D = $AttackArea/AttackHitbox
 
 @onready var _state_machine: StateMachine = $StateMachine
+
+@onready var _attack_cooldown: Timer = $AttackCooldown
 
 func _ready():
 	if initial_data != null:
@@ -41,10 +43,23 @@ func damage(amount: int):
 
 func _die():
 	_hitbox.disabled = true
+	_attack_hitbox.disabled = true
 	_animation_sprite.play("Die")
 	await _animation_sprite.animation_finished
 	queue_free()
 
 
 func _on_attack(body: Player):
-	body.take_damage(10)
+	body.take_damage(1)
+	_attack_cooldown.start()
+	
+	
+
+func _on_attack_cooldown_timeout():
+	if Global.player != null:
+		Global.player.take_damage(1)
+	_attack_cooldown.start()
+
+
+func _on_attack_exited(body):
+	_attack_cooldown.stop()

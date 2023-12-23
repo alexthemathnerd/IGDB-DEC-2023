@@ -19,9 +19,7 @@ func init(wave_data: WaveData):
 	wave_pulse.wait_time = _wave_data.length / _wave_data.pulse_amount
 
 func start():
-	print("Current Pulse: ", _current_pulse)
 	var number = int(lerp(_wave_data.min_enemy_count, _wave_data.max_enemy_count, _current_pulse/float(_wave_data.pulse_amount)))
-	print(number) 
 	for tmp in range(number):
 		_spawn(_wave_data.get_enemy())
 	_current_pulse += 1
@@ -35,7 +33,6 @@ func _on_wave_pulse():
 	print("Current Pulse: ", _current_pulse)
 	if _current_pulse < _wave_data.pulse_amount:
 		var number = int(lerp(_wave_data.min_enemy_count, _wave_data.max_enemy_count, _current_pulse/float(_wave_data.pulse_amount)))
-		print(number)
 		for tmp in range(number):
 			_spawn(_wave_data.get_enemy())
 		_current_pulse += 1

@@ -1,45 +1,50 @@
 [gd_scene load_steps=9 format=3 uid="uid://batl31cebfy4q"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_2k8ot"]
-[ext_resource type="SpriteFrames" uid="uid://dgsy3gv4eqos6" path="res://Enemy/Minotaur/MinotaurAnimation.tres" id="2_hoho5"]
-[ext_resource type="Shape2D" uid="uid://d7k41m02buqa" path="res://Enemy/Minotaur/MinotaurHitbox.tres" id="3_dxct7"]
-[ext_resource type="PackedScene" uid="uid://bt00fpep1jjba" path="res://Lib/StateMachine.tscn" id="4_3dbm3"]
-[ext_resource type="PackedScene" uid="uid://cds5phlk7cob1" path="res://Enemy/States/EnemyDie.tscn" id="5_2yqs0"]
-[ext_resource type="PackedScene" uid="uid://bvmj8phcfmp1j" path="res://Enemy/States/EnemyHurt.tscn" id="6_w5rae"]
-[ext_resource type="PackedScene" uid="uid://bhc51a2llhs3y" path="res://Enemy/States/EnemyMove.tscn" id="7_45sfi"]
+[ext_resource type="SpriteFrames" uid="uid://b0sfogwnjixen" path="res://Enemy/Ogre/OgreAnimation.tres" id="2_taqrg"]
+[ext_resource type="Shape2D" uid="uid://bokd206gcjm0x" path="res://Enemy/Ogre/OgreHitbox.tres" id="3_ibevh"]
+[ext_resource type="PackedScene" uid="uid://bt00fpep1jjba" path="res://Lib/StateMachine.tscn" id="4_u5164"]
+[ext_resource type="PackedScene" uid="uid://bhc51a2llhs3y" path="res://Enemy/States/EnemyMove.tscn" id="5_5sl6s"]
+[ext_resource type="PackedScene" uid="uid://cds5phlk7cob1" path="res://Enemy/States/EnemyDie.tscn" id="6_6s5q6"]
+[ext_resource type="PackedScene" uid="uid://bvmj8phcfmp1j" path="res://Enemy/States/EnemyHurt.tscn" id="7_xgx2k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vp18"]
-size = Vector2(27, 14)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lyf3"]
+size = Vector2(27, 13)
 
 [node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_2k8ot")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-sprite_frames = ExtResource("2_hoho5")
-animation = &"Move"
+sprite_frames = ExtResource("2_taqrg")
+animation = &"Die"
 offset = Vector2(0, -1024)
 
 [node name="EnemyHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -29)
-shape = ExtResource("3_dxct7")
-
-[node name="StateMachine" parent="." instance=ExtResource("4_3dbm3")]
-initial_state = NodePath("EnemyMove")
-
-[node name="EnemyDie" parent="StateMachine" instance=ExtResource("5_2yqs0")]
-
-[node name="EnemyHurt" parent="StateMachine" instance=ExtResource("6_w5rae")]
-
-[node name="EnemyMove" parent="StateMachine" instance=ExtResource("7_45sfi")]
+shape = ExtResource("3_ibevh")
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
 [node name="AttackHitbox" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(0, -20)
-shape = SubResource("RectangleShape2D_7vp18")
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_4lyf3")
 
-[connection signal="animation_finished" from="EnemyAnimation" to="." method="_on_animation_finished"]
+[node name="StateMachine" parent="." instance=ExtResource("4_u5164")]
+initial_state = NodePath("EnemyMove")
+
+[node name="EnemyMove" parent="StateMachine" instance=ExtResource("5_5sl6s")]
+
+[node name="EnemyDie" parent="StateMachine" instance=ExtResource("6_6s5q6")]
+
+[node name="EnemyHurt" parent="StateMachine" instance=ExtResource("7_xgx2k")]
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
