@@ -14,7 +14,7 @@ signal player_hurt(amount: int)
 
 var _state : int = States.IDLE
 var _move_dir: Vector2 = Vector2.ZERO
-
+var is_animation_finished = true;
 var in_hit_state = false
 var is_dead = false
 
@@ -50,7 +50,7 @@ func take_damage(damage_amount: int):
 	health -= damage_amount
 	if health <= 0:
 		die()
-	else:
+	elif is_animation_finished:
 		set_state(States.HIT)
 		
 
@@ -71,6 +71,8 @@ func update_state_based_on_movement():
 
 
 func set_state(new_state: int):
+	if new_state == States.HIT and not is_animation_finished:
+		return
 	_state = new_state
 	match _state:
 		States.IDLE:
@@ -82,9 +84,10 @@ func set_state(new_state: int):
 			$DeathSound.play()
 			player_died.emit()
 		States.HIT:
-			animation_player.play("Hit")
 			$HurtSound.play()
 			in_hit_state = true
+			is_animation_finished = false
+			animation_player.play("Hit")
 			
 func get_is_dead():
 	return is_dead
@@ -97,4 +100,5 @@ func _on_death_timer_timeout():
 func _on_animations_animation_finished():
 	if animation_player.animation == "Hit":
 		in_hit_state = false
-		update_state_based_on_movement()
+		is_animation_finished = true
+	update_state_based_on_movement()

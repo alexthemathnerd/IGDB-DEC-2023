@@ -136,7 +136,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("29_ccdy8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Walk",
 "speed": 15.0
 }]
@@ -165,14 +165,11 @@ scale = Vector2(0.05, 0.05)
 
 [node name="Animations" type="AnimatedSprite2D" parent="Graphics"]
 sprite_frames = SubResource("SpriteFrames_3ggsk")
-animation = &"Hit"
+animation = &"Walk"
 offset = Vector2(0, -1024)
 
 [node name="ProjectileWeapon" parent="." instance=ExtResource("30_nsjjg")]
 position = Vector2(0, -22)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("31_c1jb1")
