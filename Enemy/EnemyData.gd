@@ -14,9 +14,16 @@ const EnemyType: Dictionary = {
 
 var health: int
 var speed: float
+static var enemy_data_cache = {}
+
+
+static func preload_enemy_data():
+	for enemy_name in EnemyType.keys():
+		var path = EnemyType[enemy_name]
+		enemy_data_cache[enemy_name] = ResourceLoader.load(path)
 
 static func get_data(enemy_name: String) -> EnemyData:
-	return load(EnemyType[enemy_name]) as EnemyData
+	return enemy_data_cache.get(enemy_name)
 
 
 

@@ -12,6 +12,7 @@ var _curr_hud: Control
 func _ready():
 	Global.game = self
 	load_menu("MainMenu")
+	EnemyData.preload_enemy_data()
 
 func unload_level():
 	if (is_instance_valid(_curr_level)):
