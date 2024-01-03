@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=2 format=3 uid="uid://jfh8ibw7ymg6"]
+
+[ext_resource type="Script" path="res://Wave/WaveData.gd" id="1_hu1fk"]
+
+[resource]
+script = ExtResource("1_hu1fk")
+enemy_types = Array[String](["MINOTAUR"])
+enemy_weights = Array[int]([1])
+length = 30.0
+pulse_amount = 3
+min_enemy_count = 1
+max_enemy_count = 5

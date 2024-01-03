@@ -2,13 +2,14 @@ class_name Enemy
 extends CharacterBody2D
 
 
-
 var target: Node2D = null
 
 @export var initial_data: EnemyData
 
 @onready var _speed: float
 var _org_speed: float
+
+signal enemy_defeated
 
 @onready var _health: int
 
@@ -53,6 +54,7 @@ func _die():
 	_attack_hitbox.disabled = true
 	_animation_sprite.play("Die")
 	await _animation_sprite.animation_finished
+	enemy_defeated.emit(self)
 	queue_free()
 
 

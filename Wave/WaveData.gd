@@ -12,10 +12,10 @@ var _enemy_weights: Array[int]
 		for enemy_weight in _enemy_weights:
 			_total_weight += enemy_weight
 
-var length: float
-var pulse_amount: int
-var min_enemy_count: int
-var max_enemy_count: int
+@export var length: float
+@export var pulse_amount: int
+@export var min_enemy_count: int
+@export var max_enemy_count: int
 
 var _total_weight: int = 0
 

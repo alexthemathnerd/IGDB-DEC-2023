@@ -1,8 +1,12 @@
 [gd_resource type="Resource" script_class="WaveData" load_steps=2 format=3 uid="uid://b2xag6n6jykig"]
 
-[ext_resource type="Script" path="res://Wave/WaveData.gd" id="1_v4jre"]
+[ext_resource type="Script" path="res://Wave/WaveData.gd" id="1_yo3fo"]
 
 [resource]
-script = ExtResource("1_v4jre")
+script = ExtResource("1_yo3fo")
 enemy_types = Array[String](["DEMON", "OGRE", "MINOTAUR"])
 enemy_weights = Array[int]([5, 2, 1])
+length = 30.0
+pulse_amount = 6
+min_enemy_count = 3
+max_enemy_count = 20
