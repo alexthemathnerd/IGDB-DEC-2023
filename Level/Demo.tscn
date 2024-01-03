@@ -30,3 +30,4 @@ texture = ExtResource("3_o4hlk")
 centered = false
 
 [connection signal="player_died" from="Player" to="." method="_on_player_died"]
+[connection signal="game_completed" from="Player/WaveSpawner" to="." method="_on_game_completed"]

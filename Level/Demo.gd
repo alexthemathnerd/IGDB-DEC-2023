@@ -10,3 +10,10 @@ func _on_player_died():
 	Global.player = null
 	Global.game.unload_level()
 	Global.game.unload_hud()
+
+
+func _on_game_completed():
+	Global.game.load_menu("GameWinMenu")
+	Global.player = null
+	Global.game.unload_level()
+	Global.game.unload_hud()
